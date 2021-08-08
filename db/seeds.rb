@@ -5,6 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie_id: movies.first)
+Review.delete_all
+Movie.delete_all
+User.delete_all
+Genre.delete_all
 
 genre1 = Genre.create(name: "Science Fiction")
 genre2 = Genre.create(name: "Horror")
@@ -20,16 +24,16 @@ movie2 = Movie.create(title: "Interstellar", year: 2014, synopsis: "Matthew McCo
 movie3 = Movie.create(title: "The Thing", year: 1982, synopsis: "At a research base in Antartica, a team of scientists discover something in the ice that never should have been freed..", genre: genre2)
 movie4 = Movie.create(title: "Alien", year: 1979, synopsis: "In space, no one can hear you scream. The crew of the Nostromo soon discover this as they cross paths with the deadliest organism in the universe.", genre: genre2)
 
-review1 = Review.create(user_id: user1, movie_id: movie1, rating: 5, content: "This is a very long-winded way to tell a person that the content of this review is fake and just for testing purposes.")
-review11 = Review.create(user_id: user1, movie_id: movie2, rating: 5, content: "This is a very long-winded way to tell a person that the content of this review is fake and just for testing purposes.")
+review1 = Review.create(user_id: user1.id, movie_id: movie1.id, rating: 5, content: "This is a very long-winded way to tell a person that the content of this review is fake and just for testing purposes.")
+review11 = Review.create(user_id: user1.id, movie_id: movie2.id, rating: 5, content: "This is a very long-winded way to tell a person that the content of this review is fake and just for testing purposes.")
 
-review2 = Review.create(user_id: user2, movie_id: movie1, rating: 4, content: "This is a short fake review.")
-review22 = Review.create(user_id: user2, movie_id: movie2, rating: 3, content: "This is another short fake review.")
+review2 = Review.create(user_id: user2.id, movie_id: movie1.id, rating: 4, content: "This is a short fake review.")
+review22 = Review.create(user_id: user2.id, movie_id: movie2.id, rating: 3, content: "This is another short fake review.")
 
-review3 = Review.create(user_id: user3, movie_id: movie3, rating: 5, content: "This is a very long-winded way to tell a person that the content of this review is fake and just for testing purposes.")
-review33 = Review.create(user_id: user3, movie_id: movie4, rating: 5, content: "A short and sweet movie review.")
+review3 = Review.create(user_id: user3.id, movie_id: movie3.id, rating: 5, content: "This is a very long-winded way to tell a person that the content of this review is fake and just for testing purposes.")
+review33 = Review.create(user_id: user3.id, movie_id: movie4.id, rating: 5, content: "A short and sweet movie review.")
 
-review4 = Review.create(user_id: user4, movie_id: movie3, rating: 4, content: "This is a short movie review.")
-review44 = Review.create(user_id: user4, movie_id: movie4, rating: 3, content: "This is a very long-winded way to tell a person that the content of this review is fake and just for testing purposes.")
+review4 = Review.create(user_id: user4.id, movie_id: movie3.id, rating: 4, content: "This is a short movie review.")
+review44 = Review.create(user_id: user4.id, movie_id: movie4.id, rating: 3, content: "This is a very long-winded way to tell a person that the content of this review is fake and just for testing purposes.")
 
 
