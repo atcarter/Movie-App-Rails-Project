@@ -5,6 +5,10 @@ class SessionsController < ApplicationController
   def create
   end
 
+  def omniauth
+    
+  end
+
   def destroy
 
   end

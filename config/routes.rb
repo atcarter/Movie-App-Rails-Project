@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get '/auth/google_oauth2/callback'
+  get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
   resources :reviews
   resources :movies
   resources :genres
