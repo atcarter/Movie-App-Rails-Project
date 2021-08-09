@@ -14,16 +14,11 @@ class SessionsController < ApplicationController
   end
 
   def omniauth
-    User.find_or_create_by(uid: auth['uid'], provider: auth['provider']) do |u|
-      u.email = auth['info']['email']
-      u.username = auth['info']['name']
-      u.password = SecureRandom.hex(10)
-    end
+    user = User.omniauth(auth)
     if user.valid?
       session[:user_id] = user.id
       redirect_to movies_path
-    else
-      
+    else      
     end
   end
 
