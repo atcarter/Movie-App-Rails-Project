@@ -19,6 +19,8 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to movies_path
     else      
+      #think about adding a flash message here for the user to know what went wrong
+      redirect_to login_path
     end
   end
 
