@@ -2,9 +2,9 @@
   <%= f.label :email %>
   <%= f.text_field :email %>
   <%= f.label :password %>
-  <%= f.password_field :password %>
+  <%= f.password_field :password %> 
   <%= f.submit "Log In!" %>
 <% end %>
 
-Don't Have an account? <%= link_to "Sign up here!", signup_path %> or <%= link_to "Sign in with Google!", '/auth/google_oauth2'%>
+Don't Have an account? <%= link_to "Sign up here!", signup_path %> or <%= link_to "Sign in with Google!", '/auth/google_oauth2', method: :post %>
 
