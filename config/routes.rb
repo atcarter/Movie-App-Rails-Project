@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
+  get '/login', to: 'sessions#new'
+  delete '/logout', to: 'sessions#destroy'
   resources :reviews
   resources :movies
   resources :genres
