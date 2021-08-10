@@ -8,6 +8,10 @@ class Movie < ApplicationRecord
   validates :year, numericality: { only_integer: true }
   before_validation :titlecase
 
+  def format
+    "#{self.title} (#{self.year})"
+  end
+
   def average_rating
     sum = 0
     count = 0

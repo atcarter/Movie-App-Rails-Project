@@ -1,0 +1,7 @@
+<h2><%= @movie.format %></h2>
+<% @movie.reviews.each do |review| %>
+  <h3><%= link_to "#{movie.title} (#{movie.year})", movie_path(movie) %></h3>
+  <p><%= movie.average_rating %> Stars - <%= movie.genre.name %></p>
+  <p><%= movie.synopsis %></p>
+  <br>
+<% end %>
