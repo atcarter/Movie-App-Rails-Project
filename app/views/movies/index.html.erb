@@ -1,3 +1,7 @@
+<h2>All Movies</h2>
 <% @movies.each do |movie| %>
-  <%= movie.title %><br>
+  <h3><%= link_to "#{movie.title} (#{movie.year})", movie_path(movie) %></h3>
+  <p><%= movie.average_rating %></p>
+  <p><%= movie.synopsis %></p>
+  <br>
 <% end %>
