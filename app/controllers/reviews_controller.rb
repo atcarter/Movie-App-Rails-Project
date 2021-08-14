@@ -10,8 +10,12 @@ class ReviewsController < ApplicationController
     @review = Review.new
   end
 
+  def show
+    @revie = Review.find_by_id(:id)
+  end
+
   def create
-    
+
   end
 
 
