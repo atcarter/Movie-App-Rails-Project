@@ -6,12 +6,11 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
   
-  resources :movies, only: [:index, :show] do
+  resources :movies do
     resources :reviews, shallow: true
   end
 
-  # resources :reviews
-  # resources :genres
+  # resources :genres removing this for now
   resources :users
   root 'movies#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
