@@ -1,4 +1,5 @@
 <h2>All Movies</h2>
+<%= link_to "Sort Movies Oldest to Newest", movies_year_asc_path %> <%= link_to "Sort Movies Newest to Oldest", movies_year_desc_path %>
 <% @movies.each do |movie| %>
   <h3><%= link_to movie.format, movie_reviews_path(movie) %></h3>
   <p><%= movie.average_rating %> Stars - <%= movie.genre.name %></p>
