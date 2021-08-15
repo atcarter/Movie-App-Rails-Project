@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :redirect_if_not_signed_in?
-  
+
   def index #done
     if the_movie_exists
       @movie = Movie.find_by_id(params[:movie_id])
@@ -21,6 +21,7 @@ class ReviewsController < ApplicationController
   def show #done
     if the_review_exists
       @review = Review.find_by_id(params[:id])
+      @movie = @review.movie
     else
       redirect_to movies_path, alert: "Review not found."
     end
