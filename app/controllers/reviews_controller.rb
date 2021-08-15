@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  before_action :redirect_if_not_signed_in?
   
   def index #done
     if the_movie_exists
