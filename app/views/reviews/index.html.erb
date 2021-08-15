@@ -1,4 +1,4 @@
-<h1><%= @movie.format %></h1>
+<h1><%= link_to @movie.format, movie_path(@movie) %></h1>
 <h3><%= @movie.genre.name %></h3>
 <p><%= @movie.synopsis %></p>
 
@@ -7,6 +7,6 @@
 <br>
 <% @reviews.each do |review| %>
   <strong><%= review.user.username %></strong> <%= review.stars  %>
-  <p><%= review.content %></p>
+  <p><%= link_to review.content, review_path(review) %></p>
   <br>
 <% end %>

@@ -1,0 +1,7 @@
+<h1><%= link_to @movie.format, movie_reviews_path(@movie) %></h1>
+
+<br><br>
+<h2>Review:</h2>
+<br>
+<strong><%= @review.user.username %></strong> <%= @review.stars  %>
+<p><%= @review.content %></p>
