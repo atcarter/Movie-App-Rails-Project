@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/movies/year_desc', to: 'movies#year_desc'
   
   resources :movies do
-    resources :reviews, shallow: true
+    resources :reviews
   end
 
   # resources :genres removing this for now
