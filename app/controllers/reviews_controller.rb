@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   
-  def index
+  def index #done
     if the_movie_exists
       @movie = Movie.find_by_id(params[:movie_id])
       @reviews = @movie.reviews
@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
       redirect_to movies_path, alert: "Movie not found."
   end
 
-  def new
+  def new #done
     if the_movie_exists
       @movie = Movie.find_by_id(params[:movie_id])
       @review = @movie.reviews.build
@@ -17,44 +17,47 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def show
-    if the_movie_exists
+  def show #done
+    if the_review_exists
       @review = Review.find_by_id(params[:id])
     else
-      render
+      redirect_to movies_path, alert: "Review not found."
     end
   end
 
-  def create
+  def create #done
     @review = Review.new(review_params)
 
     if @review.save
-      redirect_to movie_review_path(@review.movie, @review)
+      redirect_to review_path(@review)
     else
       render :new
     end
   end
 
-  def edit
-    @review = Review.find_by_id(params[:id])
+  def edit #done
+    if the_review_exists && logged_in?
+      @review = Review.find_by_id(params[:id])
+    else
+      redirect_to movies_path
+    end
   end
 
-  def update
+  def update #done
     @review = Review.find_by_id(params[:id])
-    if @review.valid?
-      @review.update(review_params)
-      redirect_to movie_review_path(@review.movie, @review)
+    if @review.update(review_params)
+      redirect_to review_path(@review)
     else
       render :edit
     end
   end
 
-  def destroy
+  def destroy #done
     @review = Review.find_by_id(params[:id])
-    if @review
-      @review.delete
-    end
-    redirect_to movie_reviews_path(@review.movie)
+    @movie = @review.movie
+    @review.destroy
+
+    redirect_to movie_reviews_path(@movie)
   end
 
   private
