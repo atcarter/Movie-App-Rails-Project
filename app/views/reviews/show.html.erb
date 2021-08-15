@@ -5,3 +5,7 @@
 <br>
 <strong><%= @review.user.username %></strong> <%= @review.stars  %>
 <p><%= @review.content %></p>
+
+<% if logged_in? %>
+  <%= button_to "Edit Review", edit_review_path(@review) %> &emsp;&emsp;&emsp; <%= button_to "Delete Review", review_path(@review), method :delete %>
+<% end %>
