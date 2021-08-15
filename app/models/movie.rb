@@ -8,6 +8,9 @@ class Movie < ApplicationRecord
   validates :year, numericality: { only_integer: true }
   before_validation :titlecase
 
+  scope :order_by_year_desc, -> { order(year: :desc)}
+  scope :order_by_year_asc, -> { order(year: :asc)}
+
   def format
     "#{self.title} (#{self.year})"
   end
