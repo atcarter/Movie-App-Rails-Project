@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
+  get '/movies/year_asc', to: 'movies#year_asc'
+  get '/movies/year_desc', to: 'movies#year_desc'
   
   resources :movies do
     resources :reviews, shallow: true
