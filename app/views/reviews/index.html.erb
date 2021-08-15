@@ -1,0 +1,9 @@
+<h2><%= @movie.format %></h2>
+<h1><%= @movie.genre %></h1>
+<p><%= @movie.synopsis %></p>
+
+Reviews:
+<% @reviews.each do |review| %>
+  <strong><%= review.user.username %></strong> <%= review.rating %>
+  <p><%= review.content %></p>
+<% end %>
