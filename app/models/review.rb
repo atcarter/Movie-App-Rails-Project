@@ -6,4 +6,8 @@ class Review < ApplicationRecord
   validates :content, length: { maximum: 500 }
 
   scope :order_by_rating, -> { order(rating: :desc)}
+
+  def stars
+    "#{self.rating} Stars"
+  end
 end
