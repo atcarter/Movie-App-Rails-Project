@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   
   def index
-    if params[:movie_id] && Movie.exists?(params[:movie_id])
+    if the_movie_exists
       @movie = Movie.find_by_id(params[:movie_id])
       @reviews = @movie.reviews
     else
@@ -9,23 +9,27 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    if params[:movie_id] && Movie.exists?(params[:movie_id])
+    if the_movie_exists
       @movie = Movie.find_by_id(params[:movie_id])
-      @review = Review.new(movie_id: @movie)
+      @review = @movie.reviews.build
     else
       redirect_to movies_path, alert: "Movie not found."
     end
   end
 
   def show
-    @review = Review.find_by_id(params[:id])
+    if the_movie_exists
+      @review = Review.find_by_id(params[:id])
+    else
+      render
+    end
   end
 
   def create
     @review = Review.new(review_params)
 
     if @review.save
-      redirect_to movie_reviews_path(@review.movie)
+      redirect_to movie_review_path(@review.movie, @review)
     else
       render :new
     end
@@ -39,7 +43,10 @@ class ReviewsController < ApplicationController
     @review = Review.find_by_id(params[:id])
     if @review.valid?
       @review.update(review_params)
-      redirect_to 
+      redirect_to movie_review_path(@review.movie, @review)
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -47,12 +54,20 @@ class ReviewsController < ApplicationController
     if @review
       @review.delete
     end
-    redirect_to mov
+    redirect_to movie_reviews_path(@review.movie)
   end
 
   private
   def review_params
     params.require(:review).permit(:movie_id, :user_id, :rating, :content)
+  end
+
+  def the_movie_exists
+    params[:movie_id] && Movie.exists?(params[:movie_id])
+  end
+
+  def the_review_exists
+    params[:id] && Review.exists?(params[:id])
   end
 
 end
