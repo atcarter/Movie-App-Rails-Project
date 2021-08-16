@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :reviews, shallow: true
   end
 
-  # resources :genres removing this for now
+  resources :genres
   resources :users
   root 'movies#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
