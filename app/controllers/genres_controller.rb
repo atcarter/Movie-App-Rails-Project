@@ -1,72 +1,56 @@
 class GenresController < ApplicationController
-  before_action :redirect_if_not_signed_in?
+  before_action :redirect_if_not_admin?
 
   def index
-    @movies = Movie.all
+    @genres = Genre.all
   end
 
   def show
-    @movie = Movie.find_by_id(params[:id])
-  end
-
-  def year_asc
-    @movies = Movie.order_by_year_asc
-    render :index
-  end
-
-  def year_desc
-    @movies = Movie.order_by_year_desc
-    render :index
+    @genre = Genre.find_by_id(params[:id])
   end
 
   def new #done
-    if admin?
-      @movie = Movie.new
-      @movie.build_genre
-    else
-      redirect_to movies_path, alert: "Access denied."
-    end
+    @genre = Genre.new
   end
 
   def create #done
-    @movie = Movie.new(movie_params)
+    @genre = Genre.new(genre_params)
 
-    if @movie.save
-      redirect_to movie_path(@movie)
+    if @genre.save
+      redirect_to genre_path(@genre)
     else
       render :new
     end
   end
 
   def edit #done
-    @movie = Movie.find_by_id(params[:id])
-    if @movie && admin?
+    @genre = Genre.find_by_id(params[:id])
+    if @genre
       
     else
-      redirect_to movies_path, alert: "Movie not found or access denied."
+      redirect_to genres_path, alert: "Genre not found."
     end
   end
 
   def update #done
-    @movie = Movie.find_by_id(params[:id])
-    if @movie.update(movie_params)
-      redirect_to movie_path(@movie)
+    @genre = Genre.find_by_id(params[:id])
+    if @genre.update(genre_params)
+      redirect_to genre_path(@genre)
     else
       render :edit
     end
   end
 
   def destroy #done
-    @movie = Movie.find_by_id(params[:id])
-    @movie.destroy
+    @genre = Genre.find_by_id(params[:id])
+    @genre.destroy
 
-    redirect_to movies_path
+    redirect_to genres_path
   end
 
   private
 
-  def movie_params
-    params.require(:movie).permit(:title, :year, :synopsis, genre_attributes: [:name])
+  def genre_params
+    params.require(:genre).permit(:name)
   end
-end
 end
