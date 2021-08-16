@@ -6,4 +6,12 @@ module ApplicationHelper
   def logged_in?
     !!current_user
   end
+
+  def admin?
+    if current_user.username == "admin"
+      true
+    else
+      false
+    end
+  end
 end
