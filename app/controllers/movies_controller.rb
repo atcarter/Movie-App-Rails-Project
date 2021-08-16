@@ -24,7 +24,7 @@ class MoviesController < ApplicationController
       @movie = Movie.new
       @movie.build_genre
     else
-      redirect_to movies_path, alert: "Movie not found."
+      redirect_to movies_path, alert: "Access denied."
     end
   end
 
@@ -43,7 +43,7 @@ class MoviesController < ApplicationController
     if @movie && admin?
       
     else
-      redirect_to movies_path, alert: "Movie not found."
+      redirect_to movies_path, alert: "Movie not found or access denied."
     end
   end
 
