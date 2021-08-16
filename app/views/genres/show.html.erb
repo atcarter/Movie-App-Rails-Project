@@ -1,0 +1,7 @@
+<h1><%= link_to @movie.format, movie_reviews_path(@movie) %></h1>
+<h3><%= @movie.genre.name %></h3>
+<p><%= @movie.synopsis %></p>
+
+<% if admin? %>
+  <%= button_to "Edit Movie", edit_movie_path(@movie) %> &emsp;&emsp;&emsp; <%= button_to "Delete Movie", movie_path(@movie), method :delete %>
+<% end %>
