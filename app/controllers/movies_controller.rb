@@ -20,47 +20,47 @@ class MoviesController < ApplicationController
   end
 
   def new #done
-    if the_movie_exists
-      @movie = Movie.find_by_id(params[:movie_id])
-      @review = @movie.reviews.build
+    if admin?
+      @movie = Movie.new
+      @movie.build_genre
     else
       redirect_to movies_path, alert: "Movie not found."
     end
   end
 
   def create #done
-    @review = Review.new(review_params)
+    @movie = Movie.new(movie_params)
 
-    if @review.save
-      redirect_to review_path(@review)
+    if @movie.save
+      redirect_to movie_path(@movie)
     else
       render :new
     end
   end
 
   def edit #done
-    if the_review_exists && logged_in?
-      @review = Review.find_by_id(params[:id])
+    @movie = Movie.find_by_id(params[:id])
+    if @movie && admin?
+      
     else
-      redirect_to movies_path
+      redirect_to movies_path, alert: "Movie not found."
     end
   end
 
   def update #done
-    @review = Review.find_by_id(params[:id])
-    if @review.update(review_params)
-      redirect_to review_path(@review)
+    @movie = Movie.find_by_id(params[:id])
+    if @movie.update(movie_params)
+      redirect_to movie_path(@movie)
     else
       render :edit
     end
   end
 
   def destroy #done
-    @review = Review.find_by_id(params[:id])
-    @movie = @review.movie
-    @review.destroy
+    @movie = Movie.find_by_id(params[:id])
+    @movie.destroy
 
-    redirect_to movie_reviews_path(@movie)
+    redirect_to movies_path
   end
 
   private
