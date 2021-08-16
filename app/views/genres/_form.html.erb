@@ -1,31 +1,17 @@
-<%= form_for @movie do |f| %>
-  <% if @movie.errors.any? %>
+<%= form_for @genre do |f| %>
+  <% if @genre.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@movie.errors.count, "error") %> stopped the movie from being saved: </h2>
+      <h2><%= pluralize(@movie.errors.count, "error") %> stopped the genre from being saved: </h2>
       <ul>
-      <% @movie.errors.full_messages.each do |message| %>
+      <% @genre.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %> 
   
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-
-  <%= f.label :year %>
-  <%= f.number_field :year %>
-
-  <%= f.label :synopsis %>
-  <%= f.text_area :synopsis %>
-
-  <%= f.collection_select :genre_id, Genre.all, :id, :name %>
-
-  Create a New Genre
-  <%= f.fields_for :genre do |gen| %>
-    <%= gen.label :name %>
-    <%= gen.text_field :name %>
-  <% end %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
 
   <%= f.submit %>
 <% end %>
