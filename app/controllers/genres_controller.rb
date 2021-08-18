@@ -8,6 +8,7 @@ class GenresController < ApplicationController
   def show
     if params[:id] && Genre.exists?(params[:id])
       @genre = Genre.find_by_id(params[:id])
+      @movies = @genre.movies 
     else
       redirect_to genres_path, alert: "Genre not found."
     end

@@ -1,5 +1,11 @@
 <h1><%= @genre.name %></h1>
 
+<% @movies.each do |movie| %>
+  <%= link_to movie.format, movie_path(movie) %>
+  <br>
+<% end %>
+<br>
+
 <%= link_to "Edit Genre", edit_genre_path(@genre) %>
 
 <br><br>
