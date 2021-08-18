@@ -8,8 +8,8 @@ module ApplicationHelper
   end
 
   def admin?
-    if current_user.username == "admin"
-      true
+    if current_user
+      true if current_user.username == "admin"
     else
       false
     end
