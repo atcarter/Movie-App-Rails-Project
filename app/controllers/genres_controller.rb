@@ -14,11 +14,11 @@ class GenresController < ApplicationController
     end
   end
 
-  def new #done
+  def new
     @genre = Genre.new
   end
 
-  def create #done
+  def create 
     @genre = Genre.new(genre_params)
 
     if @genre.save
@@ -28,7 +28,7 @@ class GenresController < ApplicationController
     end
   end
 
-  def edit #done
+  def edit 
     @genre = Genre.find_by_id(params[:id])
     if @genre
       
@@ -37,7 +37,7 @@ class GenresController < ApplicationController
     end
   end
 
-  def update #done
+  def update 
     @genre = Genre.find_by_id(params[:id])
     if @genre.update(genre_params)
       redirect_to genre_path(@genre)
@@ -46,7 +46,7 @@ class GenresController < ApplicationController
     end
   end
 
-  def destroy #done
+  def destroy 
     @genre = Genre.find_by_id(params[:id])
     @genre.destroy
 

@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :redirect_if_not_signed_in?
 
-  def index #done
+  def index 
     if the_movie_exists
       @movie = Movie.find_by_id(params[:movie_id])
       @reviews = @movie.reviews
@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def new #done
+  def new 
     if the_movie_exists
       @movie = Movie.find_by_id(params[:movie_id])
       @review = @movie.reviews.build
@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def show #done
+  def show 
     if the_review_exists
       @review = Review.find_by_id(params[:id])
       @movie = @review.movie
@@ -28,7 +28,7 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def create #done
+  def create 
     @review = Review.new(review_params)
 
     if @review.save
@@ -38,7 +38,7 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def edit #done
+  def edit 
     @review = Review.find_by_id(params[:id])
     if @review == nil
       redirect_to movies_path, alert: "Movie not found."
@@ -47,7 +47,7 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def update #done
+  def update 
     @review = Review.find_by_id(params[:id])
     if @review.update(review_params)
       redirect_to review_path(@review)
@@ -56,7 +56,7 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def destroy #done
+  def destroy 
     @review = Review.find_by_id(params[:id])
     @movie = @review.movie
     @review.destroy

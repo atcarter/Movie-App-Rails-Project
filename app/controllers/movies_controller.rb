@@ -23,7 +23,7 @@ class MoviesController < ApplicationController
     render :index
   end
 
-  def new #done
+  def new 
     if admin?
       @movie = Movie.new
       @movie.build_genre
@@ -32,7 +32,7 @@ class MoviesController < ApplicationController
     end
   end
 
-  def create #done
+  def create 
     @movie = Movie.new(movie_params)
 
     if @movie.save
@@ -42,7 +42,7 @@ class MoviesController < ApplicationController
     end
   end
 
-  def edit #done
+  def edit 
     @movie = Movie.find_by_id(params[:id])
     if @movie && admin?
       
@@ -51,7 +51,7 @@ class MoviesController < ApplicationController
     end
   end
 
-  def update #done
+  def update 
     @movie = Movie.find_by_id(params[:id])
     if @movie.update(movie_params)
       redirect_to movie_path(@movie)
@@ -60,7 +60,7 @@ class MoviesController < ApplicationController
     end
   end
 
-  def destroy #done
+  def destroy 
     @movie = Movie.find_by_id(params[:id])
     @movie.destroy
 
