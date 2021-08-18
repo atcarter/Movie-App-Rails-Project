@@ -7,6 +7,7 @@ class ReviewsController < ApplicationController
       @reviews = @movie.reviews
     else
       redirect_to movies_path, alert: "Movie not found."
+    end
   end
 
   def new #done
