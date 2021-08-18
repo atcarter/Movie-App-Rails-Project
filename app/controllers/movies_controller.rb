@@ -6,7 +6,11 @@ class MoviesController < ApplicationController
   end
 
   def show
-    @movie = Movie.find_by_id(params[:id])
+    if the_movie_exists
+      @movie = Movie.find_by_id(params[:id])
+    else
+      redirect_to movies_path, alert: "Movie not found."
+    end
   end
 
   def year_asc
@@ -67,5 +71,9 @@ class MoviesController < ApplicationController
 
   def movie_params
     params.require(:movie).permit(:title, :year, :synopsis, :genre_id, genre_attributes: [:name])
+  end
+
+  def the_movie_exists
+    params[:id] && Movie.exists?(params[:id])
   end
 end
