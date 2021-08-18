@@ -5,7 +5,7 @@ This repository allows anyone to download a movie review web application that al
 
 ## Installation
 
-This web app will be locally hosted on your machine. First, clone this repository. Then, run `bundle install` to ensure all gems are present. Once this is complete, run `rails s`, go to the "/" route. You will be redirected to a login page where you can either sign in using Google or create your account within the application. Once you sign up, you can add your own reviews!
+This web app will be locally hosted on your machine. First, clone this repository. Then, run `bundle install` to ensure all gems are present. Once this is complete, run `rails s`, go to the "/" route. You will be redirected to the login page where you can either sign in using Google or create your account within the application. Once you sign up, you can add your own reviews!
 
 ## Contributor's Guide
 
