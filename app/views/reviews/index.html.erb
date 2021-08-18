@@ -5,6 +5,10 @@
 <br>
 <h2>Reviews:</h2>
 <br>
+
+<%= link_to "Create a New Review", new_movie_review_path(@movie) %>
+<br>
+
 <% @reviews.each do |review| %>
   <strong><%= review.user.username %></strong> <%= review.stars  %>
   <p><%= link_to review.content, review_path(review) %></p>
