@@ -6,7 +6,11 @@ class GenresController < ApplicationController
   end
 
   def show
-    @genre = Genre.find_by_id(params[:id])
+    if params[:id] && Genre.exists?(params[:id])
+      @genre = Genre.find_by_id(params[:id])
+    else
+      redirect_to genres_path, alert: "Genre not found."
+    end
   end
 
   def new #done
