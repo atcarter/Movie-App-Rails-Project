@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to :controller => 'movies', :action => 'index'
     else
-      redirect_to login_path
+      redirect_to login_path, alert: "Incorrect credentials."
     end
   end
 
@@ -19,8 +19,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to :controller => 'movies', :action => 'index'
     else
-      flash[:alert] = "Google log-in has failed."      
-      redirect_to login_path
+      redirect_to login_path, alert: "Google log-in has failed."
     end
   end
 
