@@ -12,20 +12,28 @@
   
   <%= f.label :title %>
   <%= f.text_field :title %>
+  <br>
 
   <%= f.label :year %>
   <%= f.number_field :year %>
+  <br>
 
   <%= f.label :synopsis %>
+  <br>
   <%= f.text_area :synopsis %>
+  <br>
 
+  <%= f.label :genre %>
   <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+  <br>
 
   Create a New Genre
   <%= f.fields_for :genre do |gen| %>
+    <br>
     <%= gen.label :name %>
     <%= gen.text_field :name %>
   <% end %>
-
+  
+  <br><br>
   <%= f.submit %>
 <% end %>

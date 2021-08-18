@@ -7,7 +7,7 @@ class Movie < ApplicationRecord
 
   validates :title, presence: true
   validates :synopsis, length: { in: 20..300}
-  validates :year, numericality: { only_integer: true }
+  validates :year, numericality: { greater_than: 1890 }
   before_validation :titlecase
 
   scope :order_by_year_desc, -> { order(year: :desc)}
