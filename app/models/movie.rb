@@ -25,7 +25,7 @@ class Movie < ApplicationRecord
       count += 1
     end
     avg = sum/count.to_f
-    avg
+    avg.round(2)
   end
 
   def genre_attributes=(attribute_hash)
