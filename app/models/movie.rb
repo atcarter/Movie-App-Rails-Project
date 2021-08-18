@@ -3,7 +3,7 @@ class Movie < ApplicationRecord
   has_many :reviews
   has_many :users, through: :reviews
 
-  accepts_nested_attributes_for :genre
+  accepts_nested_attributes_for :genre 
 
   validates :title, presence: true
   validates :synopsis, length: { in: 20..300}
@@ -26,6 +26,12 @@ class Movie < ApplicationRecord
     end
     avg = sum/count.to_f
     avg
+  end
+
+  def genre_attributes=(attribute_hash)
+    if !attribute_hash['name'].blank?
+      self.genre = Genre.find_or_create_by(attribute_hash)
+    end
   end
 
   private

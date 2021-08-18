@@ -3,5 +3,5 @@
 <p><%= @movie.synopsis %></p>
 
 <% if admin? %>
-  <%= button_to "Edit Movie", edit_movie_path(@movie) %> &emsp;&emsp;&emsp; <%= button_to "Delete Movie", movie_path(@movie), method :delete %>
+  <%= button_to "Edit Movie", edit_movie_path(@movie) %> &emsp;&emsp;&emsp; <%= button_to "Delete Movie", movie_path(@movie), method: :delete %>
 <% end %>

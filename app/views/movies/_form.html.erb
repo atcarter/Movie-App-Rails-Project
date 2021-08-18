@@ -27,13 +27,13 @@
   <%= f.collection_select :genre_id, Genre.all, :id, :name %>
   <br>
 
-  Create a New Genre
+  Or Create a New Genre:
   <%= f.fields_for :genre do |gen| %>
     <br>
     <%= gen.label :name %>
     <%= gen.text_field :name %>
   <% end %>
-  
+
   <br><br>
   <%= f.submit %>
 <% end %>
