@@ -17,8 +17,11 @@
   
   <%= f.label :rating %>
   <%= f.number_field :rating %>
+  <br>
   <%= f.label :content %>
+  <br><br>
   <%= f.text_area :content %>
-  <%= f.hidden_field :movie_id, value: @movie.id %>
+  <%= f.hidden_field :movie_id, value: @review.movie_id %>
+  <br><br>
   <%= f.submit %>
 <% end %>

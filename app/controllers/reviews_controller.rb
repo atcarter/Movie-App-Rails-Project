@@ -39,10 +39,11 @@ class ReviewsController < ApplicationController
   end
 
   def edit #done
-    if the_review_exists && logged_in?
-      @review = Review.find_by_id(params[:id])
-    else
-      redirect_to movies_path
+    @review = Review.find_by_id(params[:id])
+    if @review == nil
+      redirect_to movies_path, alert: "Movie not found."
+    elsif the_review_exists && current_user == @review.user || admin?
+
     end
   end
 
