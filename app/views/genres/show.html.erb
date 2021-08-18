@@ -6,7 +6,9 @@
 <% end %>
 <br>
 
-<%= link_to "Edit Genre", edit_genre_path(@genre) %>
+<% if admin? %>
+  <%= link_to "Edit Genre", edit_genre_path(@genre) %>
 
-<br><br>
-<%= button_to "Delete Genre", genre_path(@genre), method: :delete %>
+  <br><br>
+  <%= button_to "Delete Genre", genre_path(@genre), method: :delete %>
+<% end %>

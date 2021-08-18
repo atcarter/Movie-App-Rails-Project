@@ -1,5 +1,5 @@
 class GenresController < ApplicationController
-  before_action :redirect_if_not_admin?
+  before_action :redirect_if_not_admin?, only: [:new, :edit, :create, :update, :destroy]
 
   def index
     @genres = Genre.all
