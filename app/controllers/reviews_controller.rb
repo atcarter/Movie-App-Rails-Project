@@ -14,6 +14,7 @@ class ReviewsController < ApplicationController
     if the_movie_exists
       @movie = Movie.find_by_id(params[:movie_id])
       @review = @movie.reviews.build
+      @review.user_id = current_user.id
     else
       redirect_to movies_path, alert: "Movie not found."
     end
