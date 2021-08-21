@@ -10,18 +10,15 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <%= link_to "Genres", genres_path %> &emsp;&emsp; 
-
-
   <% if logged_in? %>
-    <%= link_to "Movies", movies_path %> &emsp;&emsp; <%= "Hello, #{current_user.username}!" %> &emsp;&emsp; <%= link_to "Log Out", logout_path, method: :delete %>
+    <%= link_to "Genres", genres_path %> &emsp;&emsp; <%= link_to "Movies", movies_path %> &emsp;&emsp; <%= "Hello, #{current_user.username}!" %> &emsp;&emsp; <%= link_to "Log Out", logout_path, method: :delete %>
   <% else %>
     <%= link_to "Sign Up", signup_path %> &emsp;&emsp; <%= link_to "Log In", login_path %>
   <% end %>
 
   <br>
   <% flash.each do |type, message| %>
-    <%= message %>
+    <h2><%= message %></h2>
   <% end %>
   <br>
   <body>
