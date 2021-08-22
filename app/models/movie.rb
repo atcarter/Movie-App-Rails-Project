@@ -13,6 +13,13 @@ class Movie < ApplicationRecord
   scope :order_by_year_desc, -> { order(year: :desc)}
   scope :order_by_year_asc, -> { order(year: :asc)}
 
+  # sort movies abc and zyx
+  scope :alphabetically, -> { order(title: :asc)}
+  scope :alphabetically_reverse, -> { order(title: :desc)}
+
+  # search for movie by title
+  scope :search_by_title, -> (title) { where("title == ?", title)}
+
   def format
     "#{self.title} (#{self.year})"
   end

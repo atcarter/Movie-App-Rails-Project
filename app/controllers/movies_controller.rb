@@ -23,6 +23,17 @@ class MoviesController < ApplicationController
     render :index
   end
 
+  # sort movies abc and zyx
+  def abc
+    @movies = Movie.alphabetically
+    render :index
+  end
+
+  def zyx
+    @movies = Movie.alphabetically_reverse
+    render :index
+  end
+
   def new 
     if admin?
       @movie = Movie.new

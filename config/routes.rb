@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   post '/signup', to: 'users#create'
   get '/movies/year_asc', to: 'movies#year_asc'
   get '/movies/year_desc', to: 'movies#year_desc'
+
+  # sort movies abc and zyx
+  get '/movies/abc', to: 'movies#abc'
+  get '/movies/zyx', to: 'movies#zyx'
   
   resources :movies do
     resources :reviews, shallow: true
